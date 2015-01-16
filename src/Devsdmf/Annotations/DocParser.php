@@ -49,7 +49,6 @@ class DocParser implements ParserInterface
                 $this->setAdapter(new $adapter());
             } else {
                 throw new AdapterNotFoundException(sprintf('Adapter for "$s" objects was not found.',get_class($reflector)));
-                return $this;
             }
         }
 
