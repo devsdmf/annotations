@@ -21,6 +21,11 @@ class Reader implements ReaderInterface
      */
     private $parser = null;
 
+    /**
+     * The Constructor
+     *
+     * @param ParserInterface $parser
+     */
     public function __construct(ParserInterface $parser = null)
     {
         if (!is_null($parser)) {
@@ -30,6 +35,9 @@ class Reader implements ReaderInterface
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getAnnotations(\Reflector $reflector)
     {
         $this->parser->setReflector($reflector);
@@ -41,6 +49,9 @@ class Reader implements ReaderInterface
         return $annotation;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getAnnotation(\Reflector $reflector, $name)
     {
         $annotation = $this->getAnnotations($reflector);
@@ -52,51 +63,81 @@ class Reader implements ReaderInterface
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getClassAnnotations(\ReflectionClass $reflector)
     {
         return $this->getAnnotations($reflector);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getClassAnnotation(\ReflectionClass $reflector, $name)
     {
         return $this->getAnnotation($reflector,$name);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getFunctionAnnotations(\ReflectionFunction $reflector)
     {
         return $this->getAnnotations($reflector);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getFunctionAnnotation(\ReflectionFunction $reflector, $name)
     {
         return $this->getAnnotation($reflector,$name);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getMethodAnnotations(\ReflectionMethod $reflector)
     {
         return $this->getAnnotations($reflector);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getMethodAnnotation(\ReflectionMethod $reflector, $name)
     {
         return $this->getAnnotation($reflector,$name);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getObjectAnnotations(\ReflectionObject $reflector)
     {
         return $this->getAnnotations($reflector);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getObjectAnnotation(\ReflectionObject $reflector, $name)
     {
         return $this->getAnnotation($reflector,$name);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getPropertyAnnotations(\ReflectionProperty $reflector)
     {
         return $this->getAnnotations($reflector);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getPropertyAnnotation(\ReflectionProperty $reflector, $name)
     {
         return $this->getAnnotation($reflector,$name);
