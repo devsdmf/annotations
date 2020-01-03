@@ -92,9 +92,9 @@ class DocParser implements ParserInterface
 
         $data = array();
 
-        preg_match_all('#@(.*?)\n#s', $input, $matches);
+        preg_match_all('#(@.*?)(?:\n|\*/)#s', $input, $matches);
 
-        $matches = $matches[0];
+        $matches = $matches[1];
         foreach ($matches as $annotation) {
             $annotation = trim($annotation);
             $annotation = explode($delimiter,$annotation);
