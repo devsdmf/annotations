@@ -79,6 +79,19 @@ class DocParserTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends testInitialize
+     * @param DocParser $parser
+     */
+    public function testParseSingleLine($parser)
+    {
+        $input = '/** @var string $foo bar */';
+        $result = $parser->parse($input);
+        $this->assertTrue(is_array($result));
+        $this->assertArrayHasKey('var', $result);
+        $this->assertEquals($result['var'], 'string $foo bar');
+    }
+
+    /**
+     * @depends testInitialize
      * @depends testSetReflectorWithAutoDiscoverAdapter
      * @param DocParser $parser
      * @return DocParser
